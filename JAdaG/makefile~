@@ -1,0 +1,39 @@
+/***********************************************************************
+*
+* JAdaG helper
+*
+* This cmd-line Tool attaches GPS-Data to your images using timestamps
+* Copyright (C) 2013 Markus Solbach <solbach.m@gmail.com>
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program. If not, see <http://www.gnu.org/licenses/>.
+*
+***********************************************************************/
+
+all:
+#	g++ -o build/simpleExif -I/usr/local/include -L/usr/local/lib -lexiv2 simpleexif.cpp
+#	g++ -o build/simpleDate -I/usr/local/include -L/usr/local/lib -lexiv2 simpleDateChanger.cpp
+#	g++ -o build/simpleGPS -I/usr/local/include -L/usr/local/lib -lexiv2 simpleGPSadder.cpp
+#	g++ -o build/simpleXML simpleXMLParser.cpp xmlParser/xmlParser.cpp -I/usr/local/include -L/usr/local/lib -lexiv2
+#	g++ -o build/simpleGPX simpleGPXParser.cpp xmlParser/xmlParser.cpp -I/usr/local/include -L/usr/local/lib -lexiv2
+	g++ -o build/JAdaG jadag.cpp xmlParser/xmlParser.cpp util.cpp gps.cpp -I/usr/local/include -L/usr/local/lib -lexiv2
+
+clean:
+	rm -rf build/
+	mkdir build
+
+run:
+	./build/JAdaG ../input/pictures/ ../input/gpx/
+
+run2:
+	./build/JAdaG ../input/pictures/
